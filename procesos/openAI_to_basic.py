@@ -1,6 +1,6 @@
 import json
 
-with open("TRL_EVALUATIONS_DATASET.jsonl", encoding="utf-8") as f:
+with open("TRL_CONCEPTUAl_DATASET.jsonl", encoding="utf-8") as f:
     dataset = [json.loads(line) for line in f]
     
 def convert_format(dataset):
@@ -11,7 +11,7 @@ def convert_format(dataset):
         messages = data.get("messages", [])
         new_basic_data = {
             "prompt": messages[1]["content"] if len(messages) > 1 else "",
-            "response": messages[2]["content"] if len(messages) > 2 else "",
+            "assistant": messages[2]["content"] if len(messages) > 2 else "",
         }
         new_basic_dataset.append(new_basic_data)
     
@@ -19,7 +19,7 @@ def convert_format(dataset):
 
 new_basic_dataset = convert_format(dataset)
 
-with open("amadeus_TRL_EVALUATION_DATASET_FULL.jsonl", 'w', encoding="utf8") as file:
+with open("amadeus_teo.jsonl", 'w', encoding="utf8") as file:
     for data in new_basic_dataset:
        json_line = json.dumps(data)
        file.write(json_line + '\n')

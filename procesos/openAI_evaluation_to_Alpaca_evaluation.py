@@ -2,7 +2,7 @@ import json
 
 # Archivos de entrada y salida
 input_file = 'TRL_EVALUATIONS_DATASET.jsonl'
-output_file = 'amadeus_TRL_DATASET_LLAMA2_EVALUATION.jsonl'
+output_file = 'amadeus.jsonl'
 
 # Lista para almacenar los datos formateados
 formatted_data = []
@@ -17,7 +17,7 @@ with open(input_file, 'r') as f:
         for message in messages:
             if message["role"] == "user":
                 if prompt:  # Si ya hay un prompt, guardar la conversación anterior
-                    formatted_data.append({"prompt": prompt, "response": response})
+                    formatted_data.append({"prompt": prompt, "assistant": response})
                     prompt = ""  # Reiniciar prompt y response para la siguiente conversación
                     response = ""
                 prompt = message["content"]
@@ -26,7 +26,7 @@ with open(input_file, 'r') as f:
         
         # Agregar la última conversación si no se ha agregado
         if prompt and response:
-            formatted_data.append({"prompter": prompt, "assistant": response})
+            formatted_data.append({"prompt": prompt, "assistant": response})
 
 # Escribir los datos formateados en el archivo de salida
 with open(output_file, 'w') as f:
