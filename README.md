@@ -1,56 +1,45 @@
 # AMADEUS_TRL_DATASET
-**AMADEUS_TRL_DATASET** es un conjunto de datos para el entrenamiento de asistentes inteligentes para la evaluacion de madurez de tecnologías en el campo de la agricultura, empleando la métrica de Nivel de Preparación Tecnológica (TRL) creado por la NASA. Para fines practicos el dataset se encuentra divido en dos, un dataset de conocimiento conceptual sobre el TRL, sus conceptos, definición de niveles, objetivos, metas dentro de cada nivel, identificación de actividades de desarrollo tecnológico, etc. Y un dataset de evaluacion conformado por flujos de conversaciones que abarcan la evaluación del TRL en todos sus niveles. La estrategia utilizada para la estimación inicial del TRL se llevo acabo por medio de una algoritmo desarrollado siguiendo los resultados obtenidos en el artículo titulado “Development of a Telegram Bot to Determine the Level of Technological Readiness”. 
-
-Los datasets Contienen mas de 400 pares de pregunta-respuesta para que el asistente brinde una evaluacion, estimacion y recomendaciones del nivel TRL de una tecnologia en el campo de la agricultura. This data set was used to train the intelligent virtual assistant [AMADEUS](https://github.com/afcoral124/chatbot-telegram-gpt3.5)
-
-Los datos utilizados en este proyecto provienen de diversas fuentes confiables y veraces, como entidades gubernamentales, universidades, La Administración Nacional de Aeronáutica y el Espacio NASA, herramientas de cálculo del TRL, etc.
-
 **AMADEUS_TRL_DATASET** es un conjunto de datos diseñado para entrenar asistentes inteligentes en la evaluación del Nivel de Preparación Tecnológica (TRL) en el campo de la agricultura, utilizando la métrica TRL desarrollada por la NASA. El dataset está organizado en dos partes:
 
 * Dataset de Conocimiento Conceptual: Incluye información sobre los conceptos y definiciones del TRL, los niveles, objetivos y metas de cada nivel, así como las actividades de desarrollo tecnológico relacionadas. Este dataset proporciona una base de conocimiento esencial para entender y aplicar la métrica TRL.
 
 * Dataset de Evaluación: Contiene flujos de conversación diseñados para simular evaluaciones del TRL en todos sus niveles. Estos flujos consisten en pares de pregunta-respuesta, permitiendo al asistente virtual ofrecer evaluaciones, estimaciones y recomendaciones sobre el nivel TRL de una tecnología en el ámbito agrícola.
 
-La estrategia para la estimación inicial del TRL se llevó a cabo mediante un algoritmo desarrollado con base en los resultados del artículo titulado "Development of a Telegram Bot to Determine the Level of Technological Readiness". Este dataset fue utilizado para entrenar al asistente virtual inteligente AMADEUS.
+La estrategia para la estimación inicial del TRL se llevó a cabo mediante un algoritmo desarrollado con base en los resultados del artículo [1] titulado "Development of a Telegram Bot to Determine the Level of Technological Readiness".
 
+![diagrama_flujo_evaluacion_inicial](https://github.com/user-attachments/assets/9f9eb3c5-496e-407d-9eaa-867ae7206b59)
 
+Los datos incluidos en este proyecto provienen de diversas fuentes confiables, como entidades gubernamentales, universidades así como herramientas de cálculo del TRL y la NASA. Estas fuentes garantizan la veracidad y la calidad de la información proporcionada.
 
-Los datos incluidos en este proyecto provienen de diversas fuentes confiables, como entidades gubernamentales, universidades y la NASA, así como herramientas de cálculo del TRL. Estas fuentes garantizan la veracidad y la calidad de la información proporcionada.
+>Este dataset fue utilizado para entrenar el asistente virtual [AMADEUS](https://github.com/afcoral124/chatbot-telegram-gpt3.5) utilizado para evaluar el nivel de madures de tecnologías en el campo de la agricultura.
+## Formato del dataset
 
+Se adoptaron dos tipos de formato para ofrecer compatibilidad con todo tipo de modelos y librerías, Los datasets de prueba y validación se publican en el formato JSON Lines.
 
-## Release format
-
-Se adoptaron dos tipos de formato para ofrecer compatibilidad con todo tipo de modelos y librerias, los archivos de entrenamiento, prueba y validacion se publican en el fomrato JSON y JSON Lines.
-
-* Compatible con "llama-2-7b-chat-hf"
+* Compatible con [llama-2-7b-chat-hf](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) y similares
 ```
-file.json/jsonl
-├── "data"
-│   └── [i]
-│       ├── "prompt" : "user request"
-|       └── "response": "model response"    
+amadeus_TRL_DATASET_LLAMA2_CONCEPTUAL.jsonl
+├── [i]
+│   ├── "prompt" : "user request"
+│   └── "response": "model response"    
 ``` 
 
-* Compatible con "GPT-3.5-turbo"
+* Compatible con [GPT-3.5-turbo](https://platform.openai.com/docs/models/gpt-3-5-turbo)
 ```
-file.json
-├── "data"
-│   └── [i]
-|       └── "messages"
-│           ├── [0]
-│           │   ├── "role": "system"
-│           │   └── "content": "System message content."
-│           ├── [1]
-│           |   ├── "role": "user"
-│           |   └── "content": "User message content."
-│           └── [2]
-│               ├── "role": "assistant"
-│               └── "content": "Assistant response content."
+amadeus_TRL_DATASET_GPT3.5TURBO.jsonl
+├── [i]
+|   └── "messages"
+│        ├── [0]
+│        │   ├── "role": "system"
+│        │   └── "content": "System message content."
+│        ├── [1]
+│        |   ├── "role": "user"
+│        |   └── "content": "User message content."
+│        └── [2]
+│            ├── "role": "assistant"
+│            └── "content": "Assistant response content."
 ```
-
-This data set was used to train the intelligent virtual assistant [AMADEUS](https://github.com/afcoral124/chatbot-telegram-gpt3.5) used to evaluate the level of maturity of technologies in the field of agriculture, using the metric of Technology Readiness Level (TRL) created by NASA.
-
-## References
+## Referencias
 
 [1] D. I. Suntsova, V. A. Pavlov, Z. V. Makarenko, P. P. Bakholdin, A. S. Politsinsky, A. S. Kremlev, A. A. Margun., “Development of a Telegram Bot to Determine the Level of Technological Readiness,”  Economics of Science. 2022;8(1):22-30. (In Russ.), doi:  10.22394/2410-132X-2022-8-1-22-30.
 
