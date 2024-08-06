@@ -21,7 +21,7 @@ Se adoptaron dos tipos de formato para ofrecer compatibilidad con todo tipo de m
 amadeus_TRL_DATASET_LLAMA2_CONCEPTUAL.jsonl
 ├── [i]
 │   ├── "prompt" : "user request"
-│   └── "response": "model response"    
+│   └── "assistant": "model response"    
 ``` 
 
 * Compatible con [GPT-3.5-turbo](https://platform.openai.com/docs/models/gpt-3-5-turbo)
